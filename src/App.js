@@ -1,10 +1,14 @@
+import './App.css';
+import Search from "./components/Search.jsx";
+import Navbar from "./components/Navbar.js";
+import Footer from "./components/Footer.js";
 
-import Navbar from "./Components/Navbar";
 function App() {
   return (
     <div className='App'>
-     <Navbar/>
-     
+      <Navbar/>
+      <Search/>
+      <Footer/>
     </div>
   );
 }

@@ -1,22 +1,38 @@
-import React, { useState } from 'react';
-import {Drawer,Icon,IconButton,List, ListItemButton, ListItemIcon, ListItemText} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';const DrawerComp= () => {
-  const [openDrawer,setopenDrawer] = useState(false)
+import React, { useState } from "react";
+import { Drawer, List, ListItemButton } from "@mui/material";
+import ListItemIcon from "@mui/material/ListItemIcon/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText/ListItemText";
+import IconButton from "@mui/material/IconButton/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+
+const PAGES = ["Articles", "About", "Contact Us", "Login", "Logout"];
+const DrawerComp = () => {
+  const [openDrawer, setopenDrawer] = useState(false);
   return (
-  <React.Fragment>
-    <Drawer open={openDrawer} onClose={()=>setopenDrawer(false)}>
-    <List>
-        <ListItemButton>
-            <ListItemIcon>
-                <ListItemText>Login</ListItemText>
-            </ListItemIcon>
-        </ListItemButton>
-    </List>
-    </Drawer>
-    <IconButton onClick={()=>setopenDrawer(!openDrawer)}>
-      <MenuIcon />
-    </IconButton>
-  </React.Fragment>
+    <React.Fragment>
+      <Drawer
+        open={openDrawer}
+        onClose={() => {
+          setopenDrawer(false);
+        }}
+      >
+        <List>
+          {PAGES.map((page, index) => (
+            <ListItemButton key={index}>
+              <ListItemIcon>
+                <ListItemText>{page}</ListItemText>
+              </ListItemIcon>
+            </ListItemButton>
+          ))}
+        </List>
+      </Drawer>
+      <IconButton
+        sx={{ margin: "auto", color: "white" }}
+        onClick={() => setopenDrawer(!openDrawer)}
+      >
+        <MenuIcon sx={{ color: "white" }} />
+      </IconButton>
+    </React.Fragment>
   );
 };
 
